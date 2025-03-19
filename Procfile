@@ -1,1 +1,0 @@
-web: gunicorn Consulting.wsgi --log-file-
