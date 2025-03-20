@@ -1,5 +1,7 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
+import base64
+from django.utils.safestring import mark_safe
 
 
 class Categorie(models.Model):
@@ -8,6 +10,8 @@ class Categorie(models.Model):
   image2 = models.ImageField(default='default.jpg', upload_to = 'Image_Cat', validators=[FileExtensionValidator(['jpg', 'png', 'jpeg'])])
   image3 = models.ImageField(default='default.jpg', upload_to = 'Image_Cat', validators=[FileExtensionValidator(['jpg', 'png', 'jpeg'])])
   
+  def image1_base64(self):
+        return mark_safe(f"data:image1/jpg;base64,{base64.b64encode(self.image1).decode('utf-8')}")
   
   
   class Meta:
