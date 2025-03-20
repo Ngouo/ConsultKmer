@@ -17,8 +17,4 @@ h3 {
   margin-top: 10px;
 }
 
-@media (max-width: 798px) {
-  h3 {
-    margin-top: 35rem;
-  }
-}
+
