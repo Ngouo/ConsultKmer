@@ -1,17 +1,12 @@
 from django.db import models
-from django.core.validators import FileExtensionValidator
-import base64
-from django.utils.safestring import mark_safe
+
+from cloudinary.models import CloudinaryField
 
 
 class Categorie(models.Model):
   nom = models.CharField(max_length=50)
-  image1 = models.ImageField(default='default.jpg', upload_to = 'Image_Cat', validators=[FileExtensionValidator(['jpg', 'png', 'jpeg'])])
-  image2 = models.ImageField(default='default.jpg', upload_to = 'Image_Cat', validators=[FileExtensionValidator(['jpg', 'png', 'jpeg'])])
-  image3 = models.ImageField(default='default.jpg', upload_to = 'Image_Cat', validators=[FileExtensionValidator(['jpg', 'png', 'jpeg'])])
+  image = CloudinaryField('image')
   
-  def image1_base64(self):
-        return mark_safe(f"data:image1/jpg;base64,{base64.b64encode(self.image1).decode('utf-8')}")
   
   
   class Meta:
